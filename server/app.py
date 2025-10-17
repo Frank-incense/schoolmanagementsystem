@@ -6,6 +6,8 @@ from flask_migrate import Migrate
 from flask_cors import CORS
 from dotenv import load_dotenv
 from server.config import db
+from server.controllers import addResource
+from server.models import User, Term, Student, Payment, Fee
 
 load_dotenv()
 
@@ -16,3 +18,6 @@ migrate = Migrate(app=app, db=db)
 bcrypt=Bcrypt(app=app)
 jwt = JWTManager(app=app)
 api = Api(app=app)
+addResource(api=api)
+
+db.init_app(app=app)
