@@ -8,7 +8,7 @@ class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
     id = Column(Integer(), primary_key=True)
-    username = Column(String())
+    username = Column(String(), unique=True)
     _password_hash = Column(String())
     created_at = Column(DateTime(), server_default=func.now())
     updated_at = Column(DateTime(), onupdate=func.now())
