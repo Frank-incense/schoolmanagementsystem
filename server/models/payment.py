@@ -16,9 +16,9 @@ class Payment(db.Model, SerializerMixin):
     created_at = Column(DateTime(), server_default=func.now())
     updated_at = Column(DateTime(), onupdate=func.now())
 
-    fees = relationship('Fee', back_populates='payments')
+    fee = relationship('Fee', back_populates='payments')
 
-    serialize_rules = ('-fees.payments',)
+    serialize_rules = ('-fee.payments',)
 
     def __repr__(self):
         return f"Payment {self.id}, {self.mpesa_code}"

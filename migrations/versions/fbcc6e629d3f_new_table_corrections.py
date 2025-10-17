@@ -1,8 +1,8 @@
-"""initial tables
+"""New table corrections
 
-Revision ID: 62815624754e
+Revision ID: fbcc6e629d3f
 Revises: 
-Create Date: 2025-10-16 23:22:01.560864
+Create Date: 2025-10-17 15:20:06.314114
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '62815624754e'
+revision = 'fbcc6e629d3f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,10 +32,10 @@ def upgrade():
     )
     op.create_table('students',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(), nullable=True),
+    sa.Column('name', sa.String(), nullable=False),
     sa.Column('contact', sa.String(), nullable=True),
     sa.Column('parent', sa.String(), nullable=True),
-    sa.Column('gender', sa.Boolean(), nullable=True),
+    sa.Column('gender', sa.Enum('Male', 'Female', name='gender_roles'), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
@@ -55,7 +55,8 @@ def upgrade():
     sa.Column('_password_hash', sa.String(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('username')
     )
     op.create_table('fees',
     sa.Column('id', sa.Integer(), nullable=False),

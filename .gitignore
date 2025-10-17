@@ -68,3 +68,5 @@ build/
 # System files
 Thumbs.db
 ehthumbs.db
+
+temp/
