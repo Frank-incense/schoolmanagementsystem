@@ -1,12 +1,12 @@
 from server.models import Student
-from flask_jwt_extended import get_jwt_identity, jwt_required
+from flask_jwt_extended import jwt_required
 from flask import request, make_response, jsonify
 from flask_restful import Resource
 from sqlalchemy import or_
 from server.config import db
 
 class Students(Resource):
-    
+    @jwt_required()
     def get(self):
         page = int(request.args.get('page'))
         per_page = int(request.args.get('per_page'))
@@ -15,25 +15,23 @@ class Students(Resource):
         query = Student.query
 
         if gender:
-            students = query.filter_by(gender=gender).all()
+            students = query.filter_by(gender=gender)
 
             if students:
-                total = len(students)
-                start = (page - 1) * per_page
-                end = start + per_page
-                paginated_students = students[start:end]
+                total = students.count()
+                paginated_students = students.offset((page - 1) * per_page).limit(per_page).all()
 
                 return make_response(jsonify({
                     'data': [student.to_dict() for student in paginated_students],
                     'total': total,
                     'page': page,
                     'per_page': per_page,
-                    'pages': (total + per_page - 1)
+                    'pages': (total // per_page)
                 }), 200)
             else:
                 return make_response(jsonify({
                     'error': 'Students not found'
-                }), 200)
+                }), 404)
         
 
         if search_term:
@@ -56,12 +54,12 @@ class Students(Resource):
                     'total': total,
                     'page': page,
                     'per_page': per_page,
-                    'pages': (total + per_page - 1)
+                    'pages': (total // per_page)
                 }), 200)
             else:
                 return make_response(jsonify({
                     'error': 'Students not found'
-                }), 200)
+                }), 404)
         
         total = query.count()
         paginated_students = query.offset((page - 1) * per_page).limit(per_page).all()
@@ -73,7 +71,7 @@ class Students(Resource):
                 'total': total,
                 'page': page,
                 'per_page': per_page,
-                'pages': (total / per_page)
+                'pages': (total // per_page)
             }), 200)
     
     @jwt_required()
@@ -104,4 +102,17 @@ class StudentById(Resource):
     
     @jwt_required()
     def patch(self, id):
-        pass
+        data = request.get_json()
+        student = Student.query.get(id)
+
+        if student:
+            for attr in data:
+                setattr(student, attr, data[attr])
+
+            db.session.commit()
+
+            return make_response(jsonify(student), 201)
+        
+        return make_response(jsonify({
+            'error': 'Student not found'
+        }), 404)
