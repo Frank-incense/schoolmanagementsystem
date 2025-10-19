@@ -6,10 +6,11 @@ from flask_migrate import Migrate
 from flask_cors import CORS
 from dotenv import load_dotenv
 from server.config import db
-from server.controllers import addResource
+from server.controllers import addResource, get_access_token
 from server.models import User, Term, Student, Payment, Fee
 
 load_dotenv()
+
 
 app = Flask(__name__)
 CORS(app=app, supports_credentials=True)
