@@ -36,10 +36,10 @@ class Students(Resource):
 
         if search_term:
             search_term = f"%{search_term}%"
-            print(search_term)
             query = query.filter(
                 or_(
                 Student.name.ilike(search_term),
+                Student.grade.ilike(search_term),
                 Student.contact.ilike(search_term),
                 Student.parent.ilike(search_term)
             ))
@@ -63,7 +63,6 @@ class Students(Resource):
         
         total = query.count()
         paginated_students = query.offset((page - 1) * per_page).limit(per_page).all()
-        print(total, paginated_students)
         if paginated_students:
 
             return make_response(jsonify({
@@ -84,6 +83,7 @@ class Students(Resource):
         
         student = Student(
             name = data.get('name'),
+            grade = data.get('grade'),
             contact = data.get('contact'),
             parent = data.get('parent'),
             gender = data.get('gender')
@@ -96,9 +96,6 @@ class Students(Resource):
 
 
 class StudentById(Resource):
-    @jwt_required()
-    def get(self, id):
-        pass
     
     @jwt_required()
     def patch(self, id):
