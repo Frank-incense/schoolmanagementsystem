@@ -8,8 +8,8 @@ from mpesa.api.c2b import C2B
 
 class Payments(Resource):
     def get(self):
-        from server.controllers import get_access_token
-        res = get_access_token()
+        from server.controllers import registerUrl
+        res = registerUrl()
         return {'res': res},200
     
 class Confirmation(Resource):

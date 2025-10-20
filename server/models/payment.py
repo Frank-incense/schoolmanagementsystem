@@ -11,7 +11,7 @@ class Payment(db.Model, SerializerMixin):
     phone_number = Column(String())
     name = Column(String())
     paid_on = Column(DateTime())
-    mpesa_code = Column(String())
+    mpesa_code = Column(String()) # Rename to account
     transaction_id = Column(Integer())
     created_at = Column(DateTime(), server_default=func.now())
     updated_at = Column(DateTime(), onupdate=func.now())
