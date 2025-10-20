@@ -7,9 +7,11 @@ from server.models import Student, User
 students_details = []
 
 def parse_folder_os(path):
+    print(os.listdir(path))
     try:
         for item in os.listdir(path):
             full_path = os.path.join(path, item)
+            print(full_path)
             if os.path.isfile(full_path):
                 
                 with open(full_path, 'r') as file:
@@ -27,8 +29,9 @@ def parse_folder_os(path):
         print(f"Path not found: {path}")
 
 # Use an absolute path
-parse_folder_os('/home/frank/Development/schoolmanagementsystem/server/temp')
+parse_folder_os('/home/kali/Portfolio/schoolmanagementsystem/server/temp')
 usrs = ['Frankincense', 'Nancy']
+
 
 def clear_data():
     db.drop_all()
