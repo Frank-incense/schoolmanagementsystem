@@ -6,7 +6,7 @@ from sqlalchemy import or_
 from server.config import db
 
 class Students(Resource):
-    @jwt_required()
+    # @jwt_required()
     def get(self):
         page = int(request.args.get('page'))
         per_page = int(request.args.get('per_page'))
