@@ -6,6 +6,7 @@ import Dashboard from './Components/Dashboard'
 import Student from './Components/Student'
 import Classes from './Components/Classes'
 import Finance from './Components/Finances'
+import Protected from './Components/Protected'
 
 export const routes = createBrowserRouter([
     {
@@ -18,7 +19,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/',
-                element:<Layout/>,
+                element:<Protected><Layout/></Protected>,
                 children: [
                     {
                         path: '/dashboard',
