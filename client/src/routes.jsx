@@ -2,6 +2,10 @@ import {createBrowserRouter} from 'react-router'
 import App from './App'
 import Login from './Components/Login'
 import Layout from './Components/Layout'
+import Dashboard from './Components/Dashboard'
+import Student from './Components/Student'
+import Classes from './Components/Classes'
+import Finance from './Components/Finances'
 
 export const routes = createBrowserRouter([
     {
@@ -18,19 +22,19 @@ export const routes = createBrowserRouter([
                 children: [
                     {
                         path: '/dashboard',
-                        element:<></>
+                        element: <Dashboard/>
                     },
                     {
                         path: '/student-info',
-                        element:<></>
+                        element:<Student/>
                     },
                     {
                         path: '/classes',
-                        element: <></>
+                        element: <Classes/>
                     },
                     {
                         path: '/finances',
-                        element: <></>
+                        element: <Finance/>
                     }
                 ]
             }
