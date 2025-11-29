@@ -1,9 +1,12 @@
 import { Search } from "lucide-react"
 import { useState } from "react"
 import ReconcileModal from "./ReconsileModal"
+import TermModal from "./TermModal"
 
 function Finance(){
     const [reconcile ,setReconcile] = useState(false)
+    const [term, setTerm] = useState(false)
+
     return(
         <div className="w-full p-10">
             <div className="">
@@ -53,6 +56,7 @@ function Finance(){
                 </form>
             </div>
             { reconcile && <ReconcileModal reconcile={reconcile} setReconcile={setReconcile}/>}
+            { term && <TermModal term={term} setTerm={setTerm}/>}
             <div className=" flex space-x-5 my-5">
                 <button 
                 type="button" 
@@ -60,7 +64,10 @@ function Finance(){
                 onClick={()=>setReconcile(!reconcile)}>
                     Reconcile Payments
                 </button>
-                <button type="button" className="text-lg p-2 px-3 text-white bg-[#00cf0e] outfit rounded-xl my-5">
+                <button 
+                type="button" 
+                className="text-lg p-2 px-3 text-white bg-[#00cf0e] outfit rounded-xl my-5"
+                onClick={()=>setTerm(!term)}>
                     Term Fees
                 </button>
             </div>

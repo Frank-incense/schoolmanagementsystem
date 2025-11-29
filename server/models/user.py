@@ -13,6 +13,8 @@ class User(db.Model, SerializerMixin):
     created_at = Column(DateTime(), server_default=func.now())
     updated_at = Column(DateTime(), onupdate=func.now())
 
+    serialize_only = ('id', 'username',)
+    
     def __repr__(self):
         return f"User {self.id}, {self.username}"   
     

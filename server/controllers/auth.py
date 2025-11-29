@@ -20,7 +20,7 @@ class Login(Resource):
                 'error': 'Input an password to login'
             }), 401)
         
-        user = User.query.get(username)
+        user = User.query.filter_by(username=username).first()
 
         if not user:
             return make_response(jsonify({
@@ -32,6 +32,7 @@ class Login(Resource):
             }),401)
         
         token = create_access_token(identity=user.id)
+        
         response = jsonify({
             'msg': 'Login successful',
             'user': user.to_dict()

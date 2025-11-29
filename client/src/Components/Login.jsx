@@ -1,4 +1,43 @@
+import { useContext, useState } from "react"
+import { AuthContext } from "./AuthContext"
+
 function Login(){
+    const {isAuth, setAuth} = useContext(AuthContext)
+    const [userDetails, setDetails] = useState({
+        username: "",
+        password: ""
+    })
+
+    function handleLogin(e){
+        e.preventDefault()
+        fetch('/api/login',
+            {
+                method: 'POST',
+                headers: {"Content-Type": "application/json"},
+                credentials: "include",
+                body: JSON.stringify(userDetails)
+            }
+        )
+        .then(r=>r.json())
+        .then((data)=>{
+            console.log(data)
+            setDetails({
+                username: "",
+                password: ""
+            })
+            setAuth(!isAuth)
+        })
+
+    }
+
+    function handleChange(e){
+       console.log(e.target.name)
+       setDetails({
+        ...userDetails,
+        [e.target.name]: e.target.value
+       })
+    }
+
     return(
         <main>
             <div className="w-100 mx-auto relative top-50 rounded-xl pt-5 bg-[#FFFFA3] ">
@@ -15,14 +54,26 @@ function Login(){
                 <div className="w-[90%] mx-auto">
                     <h3 className="text-lg outfit mt-7" style={{'--fw': '600'}}>Login</h3>
                     <div className="w-full mt-3">
-                        <form action="" className="">
+                        <form onSubmit={handleLogin} className="">
                             <div className="w-full">
                                 <label htmlFor="email" className="text-sm montserrat" style={{'--fw':'500'}}>Username:</label>
-                                <input type="email" name="email" id="email" className="w-full text-lg p-1 rounded-lg my-1 focus:outline-0 bg-white" />
+                                <input 
+                                type="text" 
+                                name="username" 
+                                id="email"
+                                onChange={handleChange}
+                                value={userDetails.username} 
+                                className="w-full text-lg p-1 rounded-lg my-1 focus:outline-0 bg-white" />
                             </div>
                             <div className="w-full">
                                 <label htmlFor="password" className="text-sm montserrat" style={{'--fw':'500'}}>Password:</label>
-                                <input type="password" name="password" id="password" className="w-full text-lg p-1 rounded-lg my-1 focus:outline-0 bg-white" />
+                                <input 
+                                type="password" 
+                                name="password" 
+                                id="password"
+                                onChange={handleChange}
+                                value={userDetails.password} 
+                                className="w-full text-lg p-1 rounded-lg my-1 focus:outline-0 bg-white" />
                             </div>
 
                             <div className="w-full">

@@ -19,7 +19,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/',
-                element:<Protected><Layout/></Protected>,
+                element:<Layout/>,
                 children: [
                     {
                         path: '/dashboard',
