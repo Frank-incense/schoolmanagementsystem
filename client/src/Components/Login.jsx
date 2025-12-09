@@ -1,12 +1,14 @@
 import { useContext, useState } from "react"
 import { AuthContext } from "./AuthContext"
-
+import { useNavigate } from "react-router-dom"
 function Login(){
     const {isAuth, setAuth} = useContext(AuthContext)
     const [userDetails, setDetails] = useState({
         username: "",
         password: ""
     })
+
+    const navigate = useNavigate()
 
     function handleLogin(e){
         e.preventDefault()
@@ -26,6 +28,7 @@ function Login(){
                 password: ""
             })
             setAuth(!isAuth)
+            navigate("/dashboard")
         })
 
     }
@@ -36,6 +39,10 @@ function Login(){
         ...userDetails,
         [e.target.name]: e.target.value
        })
+    }
+    console.log(isAuth)
+    if (isAuth){
+        navigate("/dashboard")
     }
 
     return(
@@ -48,7 +55,7 @@ function Login(){
 
                     <div className="h-1 rounded-2xl bg-[#00CF0E] my-2"></div>
 
-                    <p className="montserrat leading-none mt-7 " style={{'--fw': '200'}}>Track and manage your student fees and student grades.</p>
+                    <p className="montserrat leading-none mt-7 " style={{'--fw': '200'}}>Track and manage your learner fees and learner grades.</p>
                 </div>
 
                 <div className="w-[90%] mx-auto">

@@ -11,9 +11,9 @@ function Layout(){
             route: 'dashboard'
         },
         {
-            value: 'Student Information',
+            value: 'learner Information',
             selected: false,
-            route: 'student-info'
+            route: 'learner-info'
         },
         {
             value: 'Classes',

@@ -8,7 +8,7 @@ function Student(){
     return(
         <div className="w-full p-10">
             <div className="">
-                <h2 className="text-4xl montserrat" style={{'--fw':'600'}}>Student Information</h2>
+                <h2 className="text-4xl montserrat" style={{'--fw':'600'}}>Learner Information</h2>
             </div>
             <div className="w-full mt-5 bg-white p-4 rounded-2xl shadow-sm">
                 <form className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
@@ -65,7 +65,7 @@ function Student(){
                 setOpen(!open)
                 setAction('Add')
             }}
-            >Add a Student</button>
+            >Add a Learner</button>
             {open && <StudentModal open={open} setOpen={setOpen} action={action}/>
             }
             <div className="w-full">

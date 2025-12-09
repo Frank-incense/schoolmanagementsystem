@@ -7,22 +7,22 @@ function Dashboard(){
             <div className="flex flex-wrap gap-5 my-5">
                 <div className="bg-white w-[80%] md:w-1/2 lg:w-fit rounded-xl p-5">
                     <p className="text-2xl outfit">
-                        No. of students
+                        No. of Learners
+                    </p>
+                </div>
+                   <div className="bg-white w-[80%] md:w-1/2 lg:w-fit rounded-xl p-5">
+                    <p className="text-2xl outfit">
+                        Fee Balance
                     </p>
                 </div>
                 <div className="bg-white w-[80%] md:w-1/2 lg:w-fit rounded-xl p-5">
                     <p className="text-2xl outfit">
-                        No. of students
+                        Fee Collected
                     </p>
                 </div>
                 <div className="bg-white w-[80%] md:w-1/2 lg:w-fit rounded-xl p-5">
                     <p className="text-2xl outfit">
-                        No. of students
-                    </p>
-                </div>
-                <div className="bg-white w-[80%] md:w-1/2 lg:w-fit rounded-xl p-5">
-                    <p className="text-2xl outfit">
-                        No. of students
+                        Expected Fee
                     </p>
                 </div>
             </div>

@@ -13,7 +13,7 @@ function ReconcileModal({reconcile, setReconcile}){
                 </div>
 
                 <p className="text-lg mt-4">
-                    Select a fee payment and match to the respective student, then select what the see was paid for.
+                    Select a fee payment and match to the respective learner, then select what the see was paid for.
                 </p>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 bg-white p-3 rounded-2xl my-6">
@@ -57,7 +57,7 @@ function ReconcileModal({reconcile, setReconcile}){
                                 name="search"
                                 id="search"
                                 className="focus:outline-0 text-lg p-2 flex-1 flex-grow min-w-0"
-                                placeholder="Search for student"
+                                placeholder="Search for learner"
                             />
                             <button
                                 type="button"
@@ -95,7 +95,7 @@ function ReconcileModal({reconcile, setReconcile}){
                 >
                     <p className="montserrat text-lg ">
                         The fee <span className="font-bold">Amount </span>
-                        is to be paid to account <span className="font-bold">Student </span>
+                        is to be paid to account <span className="font-bold">learner </span>
                         for <span className="font-bold">School</span>
                     </p>
                     <button type="button"

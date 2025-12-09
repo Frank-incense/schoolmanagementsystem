@@ -9,7 +9,7 @@ function StudentModal({ open, setOpen, action }) {
             <div className="w-[90%] max-w-lg p-6 bg-[#FFFFA3] rounded-xl shadow-xl relative">
                 <div className="flex justify-between items-center">
                     <h3 className="text-xl outfit" style={{ '--fw': '600' }}>
-                        New Student
+                        New learner
                     </h3>
                     <X color="#00cf0e" className="cursor-pointer" onClick={() => setOpen(false)} />
                 </div>
