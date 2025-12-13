@@ -7,6 +7,7 @@ import Student from './Components/Student'
 import Classes from './Components/Classes'
 import Finance from './Components/Finances'
 import Protected from './Components/Protected'
+import Students from './Components/Student'
 
 export const routes = createBrowserRouter([
     {
@@ -26,8 +27,8 @@ export const routes = createBrowserRouter([
                         element: <Dashboard/>
                     },
                     {
-                        path: '/learner-info',
-                        element:<Student/>
+                        path: '/learners',
+                        element:<Students/>
                     },
                     {
                         path: '/classes',

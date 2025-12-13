@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+:root {
+  --primary-color: #00CF0E;
+  --highlight-color: #FFFFA3;
+}
+
 .montserrat{
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
@@ -13,4 +18,39 @@
   font-optical-sizing: auto;
   font-weight: var(--fw, 400);
   font-style: normal;
+}
+
+/* Custom focus styles */
+input:focus, 
+select:focus, 
+textarea:focus {
+  --tw-ring-color: var(--primary-color);
+}
+
+/* Custom hover effects */
+.hover-custom-highlight:hover {
+  background-color: var(--highlight-color);
+}
+
+/* Custom button styles */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #00b30d;
+  opacity: 0.9;
+}
+
+/* Custom badge styles */
+.badge-primary {
+  background-color: rgba(0, 207, 14, 0.1);
+  color: var(--primary-color);
+}
+
+/* Status indicators */
+.status-active {
+  background-color: rgba(0, 207, 14, 0.1);
+  color: var(--primary-color);
 }
