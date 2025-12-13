@@ -27,7 +27,7 @@ function Layout(){
         },
     ])
     return(
-        <main className="grid grid-cols-1  lg:grid-cols-4 relative bg-[#FFFFA3]">
+        <main className="flex min-h-screen bg-gray-50 lg:grid-cols-4 relative bg-[#FFFFA3]">
             <div className="bg-white">
                 <Sidebar choice={choices} isSelected={isSelected} isOpen={isOpen} setOpen={setOpen}/>
             </div>

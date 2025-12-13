@@ -98,7 +98,7 @@ function Dashboard(){
     ]
     const pieSettings = {
         margin: {right: 5},
-        width: 400,
+        width: 200,
         height: 400,
         hideLegend: true,
     }
@@ -117,7 +117,7 @@ function Dashboard(){
                 </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-6">
-                {/* Card 1: Active Learners */}
+
                 <div className="bg-gradient-to-br from-white to-emerald-50 rounded-xl p-5 shadow-sm border border-gray-100">
                     <div className="flex items-start justify-between">
                         <div>
@@ -147,7 +147,6 @@ function Dashboard(){
                     </div>
                 </div>
 
-                {/* Card 2: Fee Arrears */}
                 <div className="bg-gradient-to-br from-white to-rose-50 rounded-xl p-5 shadow-sm border border-gray-100">
                     <div className="flex items-start justify-between">
                         <div>
@@ -177,7 +176,6 @@ function Dashboard(){
                     </div>
                 </div>
 
-                {/* Card 3: Fee Collected */}
                 <div className="bg-gradient-to-br from-white to-blue-50 rounded-xl p-5 shadow-sm border border-gray-100">
                     <div className="flex items-start justify-between">
                         <div>
@@ -202,7 +200,6 @@ function Dashboard(){
                     </div>
                 </div>
 
-                {/* Card 4: Expected Fee */}
                 <div className="bg-gradient-to-br from-white to-violet-50 rounded-xl p-5 shadow-sm border border-gray-100">
                     <div className="flex items-start justify-between">
                         <div>
